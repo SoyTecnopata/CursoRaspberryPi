@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 import serial
 
-arduino=serial.Serial('/dev/ttyACM1',9600)
+arduino=serial.Serial('/dev/ttyACM0',9600)
 
 cpu = CPUTemperature()
 plt.ion()
@@ -21,7 +21,7 @@ num2=0
 num3=0
 
 def escrib_temp(data1,data2,data3,data4):
-    with open("cpu_temp_Mul.csv","a") as log:
+    with open("imprimir4Datos.csv","a") as log:
         log.write("{0},{1},{2},{3},{4}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(data1),str(data2),str(data3),str(data4)))
 
 def graph(data1,data2,data3,data4):
@@ -75,6 +75,6 @@ try:
         sleep(2)
     
 except KeyboardInterrupt:
-    plt.savefig('coso.jpg')
+    plt.savefig('grafica4datos.jpg')
     plt.close()
     print("Stop")
